@@ -26,7 +26,7 @@ const createAndSavePerson = (aPerson, done) => {
   aPerson.save(function (err, data) {
     if (err) return console.error(err);
     done(null, data);
-  })
+  });
 };
 
 // Seeder
@@ -46,8 +46,7 @@ const createManyPeople = (arrayOfPeople, done) => {
   Person.create(arrayOfPeople, function (err, data) {
     if (err) return console.error(err);
     done(null, data);
-  }
-  );
+  });
 };
 
 const findPeopleByName = (personName, done) => {
@@ -68,13 +67,17 @@ const findPersonById = (personId, done) => {
   Person.findById({ _id: personId }, function (err, data) {
     if (err) return console.error(err);
     done(null, data);
-  })
+  });
 };
 
 const findEditThenSave = (personId, done) => {
+  aPerson = findPersonById(personId);
   const foodToAdd = "hamburger";
-
-  done(null /*, data*/);
+  aPerson.favoriteFoods.push(foodToAdd);
+  aPerson.save(function (err, data) {
+    if (err) return console.error(err);
+    done(null, data);
+  });
 };
 
 const findAndUpdate = (personName, done) => {
