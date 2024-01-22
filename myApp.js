@@ -28,8 +28,25 @@ const createAndSavePerson = (done) => {
   })
 };
 
+// Seeder
+arrayOfPeople = new Person([{
+  name: "William",
+  age: 28,
+  favoriteFoods: ["pizza", "pasta", "meet"],
+},
+{
+  name: "James",
+  age: 21,
+  favoriteFoods: ["rize", "pasta", "sushi"],
+}
+]);
+
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  Person.create(arrayOfPeople, function (err, data) {
+    if (err) return console.error(err);
+    done(null, data);
+  }
+  );
 };
 
 const findPeopleByName = (personName, done) => {
