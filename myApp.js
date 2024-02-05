@@ -99,7 +99,7 @@ const findAndUpdate = (personName, done) => {
 const removeById = (personId, done) => {
   Person.findByIdAndRemove(personId, (err, data) => {
     if (err) return done(err);
-    done(null /*, data*/);
+    done(null, data);
   })
 };
 
