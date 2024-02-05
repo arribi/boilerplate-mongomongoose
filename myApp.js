@@ -85,12 +85,12 @@ const findEditThenSave = (personId, done) => {
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
   findPeopleByName(personName, (err, data) => {
-    if (err) return console.error(err);
+    if (err) return done(err);
 
     data[0].age = ageToSet;
 
     data[0].save((err, data) => {
-      if (err) return console.error(err);
+      if (err) return done(err);
       done(null, data);
     });
   });
